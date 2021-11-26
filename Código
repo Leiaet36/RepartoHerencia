@@ -1,0 +1,68 @@
+package Ejercicios;
+
+import java.util.Scanner;
+
+public class RepartoHerencia {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Scanner teclado=new Scanner(System.in);
+		float dineroTotal, dineroMayor, dineroMenor;
+		int cantidadHijosMayores, cantidadHijosMenores;
+		
+		System.out.println("Programa para reparto de herencia");
+		System.out.print("Introduzca dinero a repartir: ");
+		dineroTotal=teclado.nextFloat();
+		
+		System.out.print("Introduzca cantidad de hijos mayores de edad: "); 
+		cantidadHijosMayores=teclado.nextInt();
+		System.out.print("Introduzca cantidad de hijos menores de edad: ");
+		cantidadHijosMenores=teclado.nextInt();
+		
+		dineroMayor=dineroTotal*0.8f;
+		dineroMenor=dineroTotal*0.2f;
+		
+		if(cantidadHijosMenores==0)
+		{	
+			if(cantidadHijosMayores==0)
+			{
+				dineroMayor=0;
+			}else
+			{
+				dineroMayor+=dineroMenor;
+				dineroMayor=dineroMayor/cantidadHijosMayores;				
+			}
+			
+			dineroMenor=0;
+			
+		}else if(cantidadHijosMayores==0)
+		{	
+			dineroMenor+=dineroMayor;
+			dineroMayor=0;
+			dineroMenor=dineroMenor/cantidadHijosMenores;
+		}else
+		{
+			dineroMayor=dineroMayor/cantidadHijosMayores;
+			dineroMenor=dineroMenor/cantidadHijosMenores;
+		}
+		
+		//DecimalFormat df=new DecimalFormat("#.##");
+		
+		System.out.println("A los hijos mayores les corresponde "+
+		String.format("%.5f", dineroMayor)+" y a los menores "+ String.format("%.5f", dineroMenor));
+		
+	/* otra forma de imprimirlo en pantalla :
+	 * System.out.printf("A los hijos mayores les corresponde "+
+	 * "%.5f y a los menores %.5f", dineroMayor, dineroMenor);
+	*/
+		
+		/*
+		 * %f, %.2f Números con decimales(float, double)
+		 * %c Caracteres (char)
+		 * %d Números enteros (int, long, short)
+		 * %s Cadenas de texto (String)
+		*/
+	}
+
+}
